@@ -33,8 +33,6 @@ The model is currently **FP32**, not INT8 quantized.
 
 ## 2. Model Files
 
-Place the three model files in the same directory as `test_camera.py`:
-
 ```text
 drone-detection/
 │
