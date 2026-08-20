@@ -38,12 +38,10 @@ Place the three model files in the same directory as `test_camera.py`:
 ```text
 drone-detection/
 │
-├── test.py
-├── testOnnx.py
-├── testTf.py
+├── test.py     #code to run pt model 
+├── testOnnx.py     #code to run onnx model 
+├── testTf.py   #code to run tflite model 
 ├── README.md
-│
-└── models/
-    ├── best_new.pt
-    ├── best_new.onnx
-    └── best_new.tflite
+├── best_new.pt       #model formatted in pt
+├── best_new.onnx       #model formatted in onnx
+└── best_new.tflite    #model formatted in tflite 
