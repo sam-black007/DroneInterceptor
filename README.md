@@ -210,3 +210,18 @@ kill-switch before any autonomous flight.
   (slower) use `best_new.onnx` with ONNX Runtime instead.
 - **Hardware accel:** a Hailo AI HAT+ can be added later; that requires
   exporting to `.hef` (not covered here).
+
+---
+
+## Contributors
+
+- **[Carol-here](https://github.com/Carol-here)** — original
+  `DroneInterceptor`: single-class (drone) YOLO detection model, base
+  codebase, desktop inference (`test.py` / `testOnnx.py`), and the
+  starting trained weights.
+- **[sam-black007](https://github.com/sam-black007)** (you) — extended
+  it to a **2-class (drone + bird)** detector: added bird + extra drone
+  datasets and the download / prepare / validate / make-subset pipeline,
+  retrained on an RTX 4060, added INT8 TFLite export for the Raspberry
+  Pi 5, the Pi inference + drone-tracking script, and the flight-control
+  aim loop (`deploy/aim_controller.py`), plus this documentation.
