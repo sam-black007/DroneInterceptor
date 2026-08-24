@@ -1,0 +1,5 @@
+path: C:/Users/samjo/Downloads/drone/DroneInterceptor/data/processed_small
+train: images/train
+val: images/val
+nc: 2
+names: ['drone', 'bird']

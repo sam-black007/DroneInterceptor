@@ -82,7 +82,7 @@ while True:
 
         cv2.putText(
             annotated,
-            f"Drone {conf:.2f}",
+            f"{model.names[int(box.cls)]} {conf:.2f}",
             (x1,y1-10),
             cv2.FONT_HERSHEY_SIMPLEX,
             0.6,

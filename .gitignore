@@ -48,8 +48,9 @@ outputs/
 output/
 results/
 
-# TensorBoard
+# TensorBoard / logs
 *.log
+*.err
 .tensorboard/
 # Windows
 Thumbs.db
@@ -67,6 +68,13 @@ $RECYCLE.BIN/
 .env
 .env.*
 !.env.example
+
+# Datasets (large, downloaded)
+data/raw/
+data/processed/
+
+# Kaggle credentials
+.kaggle/
 
 *.pem
 *.key

@@ -104,10 +104,11 @@ while True:
             2
         )
 
-        # Confidence
+        # Confidence + class name
+        cls_name = results[0].names[int(box.cls[0])]
         cv2.putText(
             annotated,
-            f"{conf:.2f}",
+            f"{cls_name} {conf:.2f}",
             (x1, y1-10),
             cv2.FONT_HERSHEY_SIMPLEX,
             0.6,
