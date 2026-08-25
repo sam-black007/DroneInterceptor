@@ -1,5 +1,12 @@
 # DroneInterceptor — Drone (vs Bird) Detection
 
+> **Two-repo workflow — validate on a laptop, then deploy to the Pi:**
+> - 💻 **Laptop validation:** run `scripts/webcam_test.py` with your webcam to check
+>   drone/bird accuracy *before* shipping.
+> - 🍓 **Raspberry Pi 5 deployment:** [sam-black007/drone-bird-rpi5](https://github.com/sam-black007/drone-bird-rpi5)
+>   — INT8 TFLite + `rpi_infer.py` + flight-control `aim_controller.py`. Build/deploy there
+>   **after** laptop testing passes.
+
 YOLO11n **2-class** object detector for drone tracking, optimized for the
 **Raspberry Pi 5 (8 GB)**. The primary tracked object is the **drone**; the
 **bird** class is a confuser/negative class added to cut false positives

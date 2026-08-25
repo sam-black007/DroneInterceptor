@@ -14,18 +14,26 @@ Usage:
 """
 
 import shutil
+import argparse
 from pathlib import Path
 
 from ultralytics import YOLO
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data" / "dataset.yaml"
-WEIGHTS = ROOT / "runs" / "detect" / "drone_bird" / "weights" / "best.pt"
-
 IMG_SIZE = 640
 
 
 def main() -> None:
+    ap = argparse.ArgumentParser()
+    ap.add_argument(
+        "--weights",
+        default=str(ROOT / "runs" / "detect" / "drone_bird_rtx" / "weights" / "best.pt"),
+        help="trained .pt to export (default: drone_bird_rtx)",
+    )
+    args = ap.parse_args()
+    WEIGHTS = Path(args.weights)
+
     if not WEIGHTS.exists():
         raise SystemExit(f"Missing {WEIGHTS}. Run scripts/train.py first.")
 
@@ -44,12 +52,12 @@ def main() -> None:
     shutil.move(str(onnx_src), str(onnx_dst))
     print(f"  -> {onnx_dst}")
 
-    # ---- TFLite INT8 ----
-    print("[EXPORT] TFLite (INT8, calibrated) ...")
+    # ---- LiteRT INT8 (must run on Linux x86_64 / macOS) ----
+    print("[EXPORT] LiteRT (INT8, calibrated) ...")
     tflite_src = model.export(
-        format="tflite",
+        format="litert",
         imgsz=IMG_SIZE,
-        int8=True,
+        quantize="int8",     # INT8 post-training quantization
         nms=False,           # we run NMS in deploy/rpi_infer.py
         batch=1,
         data=str(DATA),      # used for INT8 calibration
